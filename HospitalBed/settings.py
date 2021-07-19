@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'ProtectYourself.apps.ProtectYourselfConfig',
     'HomePage.apps.HomePageConfig',
     'HospitalDetail.apps.HospitalDetailConfig',
-    'TrialApp.apps.TrialAppConfig',
+    'LoginPage.apps.TrialAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
