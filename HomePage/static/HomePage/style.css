@@ -1,0 +1,50 @@
+*
+{
+    margin:0;
+    padding:0;
+}
+
+header{
+    background-image:url('Login (1).png');
+    height: 100vh;
+    background-size:cover;
+    background-position:center ;
+}
+
+@media (max-width: 675px){
+
+
+    .header{
+        height:10px !important;
+    }
+}
+
+.nav-menu{
+    float: right;
+    list-style:none;
+    margin-top:30px;
+}
+
+.nav-menu li{
+    display:inline-block
+}
+
+.nav-menu li a{
+    color: darkblue;
+    text-decoration: darkcyan;
+    padding: 5px 20px;
+    font-family: "Verdana", "sans-serif";
+    font-size: 20px;
+    }
+
+.btn a{
+    border:solid;
+    border:white;
+    background-color:rgb(125, 180, 218);
+}
+
+.nav-menu li a:hover{
+    border:solid;
+    border:white;
+    background-color:rgb(125, 180, 218);
+}

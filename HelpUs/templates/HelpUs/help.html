@@ -1,0 +1,29 @@
+{% load  static %}
+
+<html>
+    <head>
+        <title>Covid bed Portal</title>
+        <link href = "{% static 'HelpUs/help.css' %}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header>
+            <div class="top">
+                <ul class="nav-menu">
+                    <li><a href = "/homepage/">Home</a></li>
+                    <li><a href = "/protectyourself/">Protect yourself</a></li>
+                    <li><a href = "">Login</a></li>
+                    <li><a href = "">Beds</a></li>
+                    <li class="btn"><a href = "/helpus/">Help us</a></li>
+                </ul>
+            </div>
+            <div class="boxed">
+                <h1><center>Lets Make A Change Together!</center></h1>
+                    <h3>
+                        Giving is not just about making a donation, <br> its about making difference.
+                        <br>Any help or donation,<br>No matter how small or big,<br>Will be deeply appriciated and is much needed.
+                    </h3>            
+                <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HZ6vql2XIVUiVi" async> </script> </form>      
+            </div>
+         </header>        
+    </body>
+</html>
