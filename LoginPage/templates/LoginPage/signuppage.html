@@ -1,0 +1,67 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static 'LoginPage/signuppage.css' %}">
+  <title></title>
+</head>
+
+<body>
+{% if error %}
+    {{error}}
+{% endif %}
+  <div class="signuppageDiv">
+    <div class="register">Registration Form</div>
+    <div class="fill">Fill in your details</div>
+    <form class="signupForm"  method="post">
+      {% csrf_token %}
+
+      <span class="formItems">Username:</span>
+      <input type="text" name="uname" >
+      <br />
+      </br>
+      <span class="formItems">Age:</span>
+      <input type="number" name="age" >
+      <br />
+      </br>
+      <span class="formItems">Phone Number:</span>
+      <input type="number" name="phone_no" >
+      <br />
+      </br>
+      <span class="formItems">Email:</span>
+      <input type="text" name="email" >
+      <br />
+      </br>
+      <span class="formItems">Aadhar No:</span>
+      <input type="number" name="aadhar" >
+      <br />
+      </br>
+      <span class="formItems">Password:</span>
+      <input type="password" name="pass" >
+      <br>
+      </br>
+      <span class="formItems">Confirm Password:</span>
+      <input type="password" name="passwordagain" >
+      <br />
+      </br>
+      <span class="formItems">State:</span>
+      <input type="text" name="state" >
+      <br />
+      </br>
+      <span class="formItems">City:</span>
+      <input type="text" name="city" >
+        <br></br>
+        <br>
+          <button type="submit" name="button">Submit</button>
+      <br/>
+      </br>
+      </br>
+    </form>
+  </div>
+
+</body>
+
+</html>

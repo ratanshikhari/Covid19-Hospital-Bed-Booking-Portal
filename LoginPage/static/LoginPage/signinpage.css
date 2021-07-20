@@ -3,7 +3,6 @@
 }
 
 .loginText{
-  padding-top: 90px;
   text-align: center;
   font-size: 40px;
   font-weight: bold;
@@ -42,6 +41,6 @@ button{
   background-image: url('plainblue.jpeg');
   margin-top: 50px;
   margin-left: 200px;
-  margin-right: 220px;
+  margin-right: 200px;
   border-radius: 20px;
 }

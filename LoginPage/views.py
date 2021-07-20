@@ -25,7 +25,7 @@ def registerPage(request):
         if request.POST['pass'] == request.POST['passwordagain']:
             try:
                 user = User .objects.get(username=request.POST['uname'])
-                return render((request, 'LoginPage/signuppage.html', {'error': "Username has already been taken!"}))
+                return render(request, 'LoginPage/signuppage.html', {'error': "Username has already been taken!"})
             except User.DoesNotExist:
                 user = User.objects.create_user(username=request.POST['uname'], password=request.POST['pass'])
                 phnum = request.POST['phone_no']
