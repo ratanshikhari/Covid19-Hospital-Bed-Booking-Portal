@@ -38,9 +38,12 @@ button{
 }
 
 .loginDiv{
-  background-image: url('plainblue.jpeg');
+  background-image: url('plainBlue.jpeg');
   margin-top: 50px;
   margin-left: 200px;
   margin-right: 200px;
   border-radius: 20px;
+}
+body{
+  background-size: cover;
 }
