@@ -1,0 +1,166 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'LoginPage/beds.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="wid">
+        <header>
+            <div >
+                <ul class="nav-menu">
+                    <li><a href = "/homepage/">Home</a></li>
+                    <li><a href = "/protectyourself/">Protect Yourself</a></li>
+                    <li><a href = "/login/">Login</a></li>
+                    <li class="btn"><a href = "/hospitaldetails/">Beds</a></li>
+                    <li><a href = "/helpus/">Help us</a></li>
+                    <li><a href = "/logout/">Logout</a></li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <center>  <h1> WELCOME </h1> </center>
+
+            <div class="description">
+                <span>Please go through the list of available beds and the locations. Click on the map link to navigate to the location.</span>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                <table class="table table-responsive table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Hospital Location</th>
+                            <th>Hospital Name</th>
+                            <th>Hospital Code</th>
+                            <th>Address</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>Pincode</th>
+                            <th>Number of Beds</th>
+                            <th>Beds Booked</th>
+                            <th>Beds Available</th>
+                            <th>Book Bed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                        <tr class="abc">
+                            <td class="row-data">{{i.map}}</td>
+                            <td class="row-data">{{d.hName}}</td>
+                            <td class="row-data">{{d.hCode}}</td>
+                            <td class="row-data">{{d.hAddress}}</td>
+                            <td class="row-data">{{d.hState}}</td>
+                            <td class="row-data">{{d.hCity}}</td>
+                            <td class="row-data">{{d.hPincode}}</td>
+                            <td class="row-data">{{d.hTotalNumBed}}</td>
+                            <td class="row-data">{{d.hBedBooked}}</td>
+                            <td class="row-data"></td>
+                            <td class="row-data"><button onclick="document.getElementById('booking').style.display='block'; disable();show(); " class="button" >Book</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+            <div id="booking" style="display: none;">
+                <p class="lead"><b>Please agree to the terms and conditions:</b></p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onClick="document.querySelectorAll('.container')[0].style.display='block' " id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      <p><small>I hereby consent to sharing my data for verification of the authenticity of my COVID-19 report.I solemnly state that I will not upload falsified reports or other documents which may delay others valuable healthcare.</small>
+                    </label>
+                    </div>
+                </form>
+            </div>
+            <br/>
+            <br/>
+            <div class="container" style="display:none">
+                <div id="report">
+                    <p><b>Upload your COVID-19 positive report here:</b></p>
+                    <div>
+                        <form method="POST">
+                        {% csrf_token %}
+
+                        <input class="form-control form-control-sm" id="formFileLg" type="file" >
+                        </form>
+                    </div>
+                    <br/>
+                    <br/>
+                    <p><b>Your booking details:</b></p>
+                    <p id="a"> </p>
+                    <p id="b"> </p>
+                    <p id="c"> </p>
+                    <p id="d"> </p>
+                    <p id="e"> </p>
+                    <p id="f"> </p>
+
+
+
+                </div>
+
+                <div id="submit_button">
+                    <form method="POST">
+                     {% csrf_token %}
+                    </br>
+                    <input type="button" class="but" value="Submit and Book Bed" onclick="this.disabled=true;this.value='Processing...'">
+                    </form>
+                </div>
+            </div>
+
+        </main>
+        <script>
+            var abcElements = document.querySelectorAll('.abc');
+
+            // Set their ids
+            for (var i = 0; i < abcElements.length; i++)
+                abcElements[i].id =  i;
+
+            function disable()
+            {
+                var arr= document.getElementsByClassName('button');
+                for(var j=0;j< abcElements.length;j++)
+                    arr[j].disabled=true;
+
+            }
+
+             function show() {
+                var rowId = event.target.parentNode.parentNode.id;
+              //this gives id of tr whose button was clicked
+                var data = document.getElementById(rowId).querySelectorAll(".row-data");
+              /*returns array of all elements with
+              "row-data" class within the row with given id*/
+
+
+                var map = data[0].innerHTML;
+                var hName = data[1].innerHTML;
+                var hCode = data[2].innerHTML;
+                var hAddress = data[3].innerHTML;
+                var hState = data[4].innerHTML;
+                var hCity = data[5].innerHTML;
+                var hPincode = data[6].innerHTML;
+                var hTotalNumBed = data[7].innerHTML;
+                var hBedBooked = data[8].innerHTML;
+
+                document.getElementById("a").innerHTML=map;
+                document.getElementById("b").innerHTML=hName;
+                document.getElementById("c").innerHTML=hCode;
+                document.getElementById("d").innerHTML=hAddress;
+                document.getElementById("e").innerHTML=hCity;
+                document.getElementById("f").innerHTML=hPincode;
+                document.getElementById("g").innerHTML=hTotalNumBed;
+                document.getElementById("h").innerHTML=hBedBooked;
+            }
+
+
+        </script>
+
+    </body>

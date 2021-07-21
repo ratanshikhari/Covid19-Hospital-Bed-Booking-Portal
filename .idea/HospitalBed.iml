@@ -28,6 +28,7 @@
         <option value="$MODULE_DIR$/HomePage/templates" />
         <option value="$MODULE_DIR$/ProtectYourself/templates" />
         <option value="$MODULE_DIR$/HelpUs/templates" />
+        <option value="$MODULE_DIR$/LoginPage/templates" />
       </list>
     </option>
   </component>

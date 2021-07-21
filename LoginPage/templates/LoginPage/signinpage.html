@@ -8,10 +8,6 @@
     <title></title>
   </head>
   <body background='{% static 'LoginPage/Login.png' %}'>
-    {% if error %}
-        {{error}}
-    {% endif %}
-
     <div class="loginDiv">
       <p class="loginText">Login</p>
       <div class="loginForm">
@@ -25,9 +21,11 @@
           <br>
           <button type="submit" name="button">Verify</button>
         </form><br>
+          {% if error %}
+              <h3>{{ error }}</h3>
+          {% endif %}
         <a href="/login/register"><p>Don't have any account?<br />Make new Account</p></a>
       </div>
-
     </div>
   </body>
 </html>

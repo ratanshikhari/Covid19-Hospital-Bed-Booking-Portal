@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
 from . models import extendeduser
+from HospitalDetail.models import HospitalDetails
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
 
 from .forms import CreateUserForm
 
@@ -12,11 +15,15 @@ def loginPage(request):
         user = auth.authenticate(username=request.POST['uname'], password=request.POST['pass'])
         if user is not None:
             auth.login(request, user)
-            return HttpResponse("Logged IN!")
+            return redirect('/hospitaldetails/')
         else:
             return render(request, 'LoginPage/signinpage.html', {'error': "Invalid Login credentials "})
     else:
         return render(request, 'LoginPage/signinpage.html', context)
+
+def logoutuser(request):
+    logout(request)
+    return render(request, 'HomePage/index.html', {})
 
 
 def registerPage(request):
@@ -35,6 +42,7 @@ def registerPage(request):
                 state = request.POST['state']
                 city = request.POST['city']
                 newextendeduser = extendeduser(phone_no=phnum, age=age, email=email, aadhar=aadhar, state=state, city= city, user=user)
+                newextendeduser.save()
                 auth.login(request, user)
 
                 return HttpResponse("Registered!")
@@ -42,3 +50,8 @@ def registerPage(request):
             return render(request, 'LoginPage/signuppage.html', {'error': "Password Dont match"})
     else:
         return render(request, 'LoginPage/signuppage.html', context)
+
+@login_required(login_url='/login/')
+def displayHDetails(request):
+    datas = HospitalDetails.objects.all()
+    return render(request, 'LoginPage/beds.html', {'data': datas})
