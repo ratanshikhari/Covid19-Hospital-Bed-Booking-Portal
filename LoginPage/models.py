@@ -9,10 +9,12 @@ class SignUp(models.Model):
         return self.userName + " " + self.userPassword
 
 class extendeduser(models.Model):
-    age = models.CharField(max_length=200, null=True)
-    phone_no = models.CharField(max_length=200, null=True)
+    name = models.CharField(max_length=200, null=True)
+    age = models.IntegerField(null=True)
+    phone_no = models.IntegerField(null=True)
     email = models.CharField(max_length=200, null=True)
-    aadhar = models.CharField(max_length=200, null=True)
+    aadhar = models.IntegerField(null=True)
     state = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)
+    hSelectedName = models.CharField(max_length=200, null=True, default='Hospital not yet booked')
     user = models.OneToOneField(User, on_delete=models.CASCADE)

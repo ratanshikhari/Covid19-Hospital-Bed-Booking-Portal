@@ -1,0 +1,60 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Covid bed Portal</title>
+        <link href = "{% static 'LoginPage/details.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <div class="top">
+                <ul class="nav-menu">
+                    <li><a href = "/homepage/">Home</a></li>
+                    <li><a href = "/protectyourself/">Protect Yourself</a></li>
+                    <li><a href = "/hospitaldetails/">Beds</a></li>
+                    <li><a href = "/helpus/">Help us</a></li>
+                    <li ><a href = "/logout/">Logout</a></li>
+                </ul>
+            </div>
+        {% for u in udata %}
+        <div class="formDiv">
+
+            <form class="signupForm" action="index.html" method="post">
+              <span class="formItems">Name:</span>
+
+              <input type="text" name="" value="{{u.name}}" readonly="readonly">
+              <br />
+              </br>
+              <span class="formItems">Age:</span>
+              <input type="text" name="" value="{{u.age}}" readonly="readonly">
+              <br />
+              </br>
+              <span class="formItems">Phone Number:</span>
+              <input type="text" name="" value="{{u.phone_no}}" readonly="readonly">
+              <br />
+              </br>
+              <span class="formItems">Email:</span>
+              <input type="text" name="" value="{{u.email}}" readonly="readonly">
+              <br />
+              </br>
+              <span class="formItems">Bed Booked In:</span>
+              <input type="text" name="" value="{{hospital_name}}" readonly="readonly">
+              <br />
+              </br>
+              <span class="formItems">State:</span>
+              <input type="text" name="" value="{{u.state}}" readonly="readonly">
+              <br />
+              </br>
+              <span class="formItems">City:</span>
+              <input type="text" name="" value="{{u.city}}" readonly="readonly">
+              <br />
+
+              </br>             
+            </form>
+
+        </div>
+        {% endfor %}
+    </header>
+    </body>
+</html>

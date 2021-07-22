@@ -15,7 +15,7 @@ def loginPage(request):
         user = auth.authenticate(username=request.POST['uname'], password=request.POST['pass'])
         if user is not None:
             auth.login(request, user)
-            return redirect('/hospitaldetails/')
+            return redirect('/userdetails/')
         else:
             return render(request, 'LoginPage/signinpage.html', {'error': "Invalid Login credentials "})
     else:
@@ -36,12 +36,13 @@ def registerPage(request):
             except User.DoesNotExist:
                 user = User.objects.create_user(username=request.POST['uname'], password=request.POST['pass'])
                 phnum = request.POST['phone_no']
+                name = request.POST['name']
                 age = request.POST['age']
                 email = request.POST['email']
                 aadhar = request.POST['aadhar']
                 state = request.POST['state']
                 city = request.POST['city']
-                newextendeduser = extendeduser(phone_no=phnum, age=age, email=email, aadhar=aadhar, state=state, city= city, user=user)
+                newextendeduser = extendeduser(phone_no=phnum, age=age, email=email, aadhar=aadhar, state=state, city= city, user=user, name=name)
                 newextendeduser.save()
                 auth.login(request, user)
 
@@ -55,3 +56,8 @@ def registerPage(request):
 def displayHDetails(request):
     datas = HospitalDetails.objects.all()
     return render(request, 'LoginPage/beds.html', {'data': datas})
+
+@login_required(login_url='/login/')
+def userDetails(request):
+    uData = extendeduser.objects.filter(user=request.user)
+    return render(request, 'LoginPage/details.html', {'udata': uData})

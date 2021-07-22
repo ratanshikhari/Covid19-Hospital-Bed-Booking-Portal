@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from LoginPage.views import displayHDetails, logoutuser
+from LoginPage.views import displayHDetails, logoutuser, userDetails
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('helpus/', include('HelpUs.urls')),
     path('hospitaldetails/', displayHDetails),
     path('logout/', logoutuser),
+    path('userdetails/', userDetails),
 ]
