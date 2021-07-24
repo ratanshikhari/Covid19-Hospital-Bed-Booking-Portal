@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 
 body{
     background: radial-gradient(rgba(162, 137, 172, 0.288),rgba(156, 206, 98, 0.644));

@@ -46,7 +46,7 @@ def registerPage(request):
                 newextendeduser.save()
                 auth.login(request, user)
 
-                return HttpResponse("Registered!")
+                return redirect('/login/')
         else:
             return render(request, 'LoginPage/signuppage.html', {'error': "Password Dont match"})
     else:
@@ -59,5 +59,12 @@ def displayHDetails(request):
 
 @login_required(login_url='/login/')
 def userDetails(request):
+    if request.method == "POST":
+        if request.POST.get('reportFile'):
+            uDataNew = extendeduser.objects.get(user=request.user)
+            uDataNew.reportFile = request.POST.get('reportFile')
+            uDataNew.hBooked = True
+            uDataNew.save(['reportFile'], ['hBooked'])
     uData = extendeduser.objects.filter(user=request.user)
     return render(request, 'LoginPage/details.html', {'udata': uData})
+

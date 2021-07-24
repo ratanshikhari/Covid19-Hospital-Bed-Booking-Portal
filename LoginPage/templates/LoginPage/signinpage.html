@@ -8,6 +8,13 @@
     <title></title>
   </head>
   <body background='{% static 'LoginPage/Login.png' %}'>
+
+    <div class="top">
+      <ul class="nav-menu">
+          <li class="btn"><a href = "/homepage/"> < Home </a></li>
+      </ul>
+  </div>
+
     <div class="loginDiv">
       <p class="loginText">Login</p>
       <div class="loginForm">
@@ -21,11 +28,12 @@
           <br>
           <button type="submit" name="button">Verify</button>
         </form><br>
-          {% if error %}
+        {% if error %}
               <h2>{{ error }}</h2>
           {% endif %}
         <a href="/login/register"><p>Don't have any account?<br />Make new Account</p></a>
       </div>
+
     </div>
   </body>
 </html>

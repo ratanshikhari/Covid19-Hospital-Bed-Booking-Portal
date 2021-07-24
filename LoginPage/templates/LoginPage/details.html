@@ -10,10 +10,11 @@
         <header>
             <div class="top">
                 <ul class="nav-menu">
-                    <li><a href = "/homepage/">Home</a></li>
-                    <li><a href = "/protectyourself/">Protect Yourself</a></li>
+                    <li><a href = "/homepageAL/">Home</a></li>
+                    <li><a href = "/protectyourselfAL/">Protect Yourself</a></li>
                     <li><a href = "/hospitaldetails/">Beds</a></li>
-                    <li><a href = "/helpus/">Help us</a></li>
+                    <li class="btn"><a href = "/userdetails/">User Details</a></li>
+                    <li><a href = "/helpusAL/">Help us</a></li>
                     <li ><a href = "/logout/">Logout</a></li>
                 </ul>
             </div>
@@ -39,7 +40,7 @@
               <br />
               </br>
               <span class="formItems">Bed Booked In:</span>
-              <input type="text" name="" value="{{hospital_name}}" readonly="readonly">
+              <input type="text" name="" value="{{u.hBooked}}" readonly="readonly">
               <br />
               </br>
               <span class="formItems">State:</span>
@@ -48,11 +49,12 @@
               </br>
               <span class="formItems">City:</span>
               <input type="text" name="" value="{{u.city}}" readonly="readonly">
-              <br />
-
-              </br>             
             </form>
-
+            <tr>
+                {% if u.hBooked == True %}
+                <td><a href="{{ u.reportFile.url }}" download="">Covid Report File: {{ u.reportFile }}</a></td>
+                {% endif %}
+            </tr>
         </div>
         {% endfor %}
     </header>

@@ -8,10 +8,13 @@
   <link rel="stylesheet" href="{% static 'LoginPage/signuppage.css' %}">
   <title></title>
 </head>
-
 <body>
-
-  <div class="signuppageDiv">
+    <div class="top">
+      <ul class="nav-menu">
+          <li class="btn"><a href = "/homepage/">< Home</a></li>
+          </ul>
+    </div>
+    <div class="signuppageDiv">
     <div class="register">Registration Form</div>
     <div class="fill">Fill in your details</div>
     <form class="signupForm"  method="post">
@@ -19,10 +22,6 @@
 
       <span class="formItems">Username:</span>
       <input type="text" name="uname" >
-      <br />
-        </br>
-      <span class="formItems">Name:</span>
-      <input type="text" name="name" >
       <br />
       </br>
       <span class="formItems">Age:</span>
@@ -57,7 +56,7 @@
       <input type="text" name="city" >
         <br>
             {% if error %}
-                {{error}}
+                <h2> {{error}}</h2>>
             {% endif %}
         </br>
         <br>

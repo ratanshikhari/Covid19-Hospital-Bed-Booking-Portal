@@ -14,11 +14,11 @@
         <header>
             <div >
                 <ul class="nav-menu">
-                    <li><a href = "/homepage/">Home</a></li>
-                    <li><a href = "/protectyourself/">Protect Yourself</a></li>
-                    <li><a href = "/login/">Login</a></li>
+                    <li><a href = "/homepageAL/">Home</a></li>
+                    <li><a href = "/protectyourselfAL/">Protect Yourself</a></li>
                     <li class="btn"><a href = "/hospitaldetails/">Beds</a></li>
-                    <li><a href = "/helpus/">Help us</a></li>
+                    <li><a href = "/userdetails/">User Details</a></li>
+                    <li><a href = "/helpusAL/">Help us</a></li>
                     <li><a href = "/logout/">Logout</a></li>
                 </ul>
             </div>
@@ -51,7 +51,7 @@
                     <tbody>
                         {% for d in data %}
                         <tr class="abc">
-                            <td class="row-data">{{i.map}}</td>
+                            <td class="row-data"><a href="{{ d.hLocation }}" target="_blank">Link</a></td>
                             <td class="row-data">{{d.hName}}</td>
                             <td class="row-data">{{d.hCode}}</td>
                             <td class="row-data">{{d.hAddress}}</td>
@@ -87,10 +87,11 @@
                 <div id="report">
                     <p><b>Upload your COVID-19 positive report here:</b></p>
                     <div>
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
 
-                        <input class="form-control form-control-sm" id="formFileLg" type="file" >
+                        <input class="form-control form-control-sm" id="formFileLg" type="file" required name="reportFile">
+                            <input type="button" value="Upload">
                         </form>
                     </div>
                     <br/>
@@ -111,7 +112,7 @@
                     <form method="POST">
                      {% csrf_token %}
                     </br>
-                    <input type="button" class="but" value="Submit and Book Bed" onclick="this.disabled=true;this.value='Processing...'">
+                    <input type="button" class="but" value="Submit and Book Bed" onclick="this.disabled=true;this.value='Booked!'">
                     </form>
                 </div>
             </div>
@@ -150,7 +151,7 @@
                 var hTotalNumBed = data[7].innerHTML;
                 var hBedBooked = data[8].innerHTML;
 
-                document.getElementById("a").innerHTML=map;
+
                 document.getElementById("b").innerHTML=hName;
                 document.getElementById("c").innerHTML=hCode;
                 document.getElementById("d").innerHTML=hAddress;
