@@ -40,7 +40,7 @@
               <br />
               </br>
               <span class="formItems">Bed Booked In:</span>
-              <input type="text" name="" value="{{u.hBooked}}" readonly="readonly">
+              <input type="text" name="" value="{{u.hSelectedName}}" readonly="readonly">
               <br />
               </br>
               <span class="formItems">State:</span>
@@ -50,11 +50,11 @@
               <span class="formItems">City:</span>
               <input type="text" name="" value="{{u.city}}" readonly="readonly">
             </form>
-            <tr>
+                </br>
+                <span class="formItems">Covid Report File: </span>
                 {% if u.hBooked == True %}
-                <td><a href="{{ u.reportFile.url }}" download="">Covid Report File: {{ u.reportFile }}</a></td>
+                <td><a class="formItemsNew" href="" download="{{ u.reportFile.url }}">{{ u.reportFile }}</a></td>
                 {% endif %}
-            </tr>
         </div>
         {% endfor %}
     </header>

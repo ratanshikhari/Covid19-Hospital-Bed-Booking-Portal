@@ -13,7 +13,7 @@ class extendeduser(models.Model):
     age = models.IntegerField(null=True)
     phone_no = models.IntegerField(null=True)
     email = models.CharField(max_length=200, null=True)
-    reportFile = models.FileField(null=True)
+    reportFile = models.FileField()
     aadhar = models.IntegerField(null=True)
     state = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)

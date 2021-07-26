@@ -5,14 +5,14 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="{% static 'LoginPage/signuppage.css' %}">
+  <link rel="stylesheet" href="{% static 'LoginPage/registrationform.css' %}">
   <title></title>
 </head>
 <body>
     <div class="top">
-      <ul class="nav-menu">
-          <li class="btn"><a href = "/homepage/">< Home</a></li>
-          </ul>
+        <ul class="nav-menu">
+          <li class="btn"><a href = "/homepage/"> < Home </a></li>
+        </ul>
     </div>
     <div class="signuppageDiv">
     <div class="register">Registration Form</div>
@@ -21,42 +21,42 @@
       {% csrf_token %}
 
       <span class="formItems">Username:</span>
-      <input type="text" name="uname" >
+      <input type="text" name="uname" required>
       <br />
       </br>
       <span class="formItems">Age:</span>
-      <input type="number" name="age" >
+      <input type="number" name="age" required>
       <br />
       </br>
       <span class="formItems">Phone Number:</span>
-      <input type="number" name="phone_no" >
+      <input type="number" name="phone_no" required>
       <br />
       </br>
       <span class="formItems">Email:</span>
-      <input type="text" name="email" >
+      <input type="email" name="email" required>
       <br />
       </br>
       <span class="formItems">Aadhar No:</span>
-      <input type="number" name="aadhar" >
+      <input type="number" name="aadhar" required>
       <br />
       </br>
       <span class="formItems">Password:</span>
-      <input type="password" name="pass" >
+      <input type="password" name="pass" required>
       <br>
       </br>
       <span class="formItems">Confirm Password:</span>
-      <input type="password" name="passwordagain" >
+      <input type="password" name="passwordagain" required>
       <br />
       </br>
       <span class="formItems">State:</span>
-      <input type="text" name="state" >
+      <input type="text" name="state" required>
       <br />
       </br>
       <span class="formItems">City:</span>
-      <input type="text" name="city" >
+      <input type="text" name="city" required>
         <br>
             {% if error %}
-                <h2> {{error}}</h2>>
+               <h2>{{error}}</h2>
             {% endif %}
         </br>
         <br>

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from LoginPage.views import displayHDetails, logoutuser, userDetails
+from LoginPage.views import displayHDetails, logoutuser, userDetails, viewHDetails
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -32,7 +32,9 @@ urlpatterns = [
     path('hospitaldetails/', displayHDetails),
     path('logout/', logoutuser),
     path('userdetails/', userDetails),
+    path('hospitaldetailsview/', viewHDetails),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

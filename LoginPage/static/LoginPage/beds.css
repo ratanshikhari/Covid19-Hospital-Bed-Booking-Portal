@@ -28,7 +28,13 @@ background-color: antiquewhite;
     margin: 50px auto;
 }
 
+@media (max-width: 675px){
 
+
+    .header{
+        height:10px !important;
+    }
+}
 
 
 header{

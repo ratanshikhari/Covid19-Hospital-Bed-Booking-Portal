@@ -1,1 +1,43 @@
-<h1>login</h1>
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'LoginPage/login.css' %}" />
+    <title></title>
+  </head>
+  <body background="{% static 'LoginPage/Login.png' %}">
+
+    <div class="top">
+      <ul class="nav-menu">
+          <li class="btn"><a href = "/homepage/"> < Home </a></li>
+      </ul>
+  </div>
+
+    <div class="loginDiv">
+      <p class="loginText">Login</p>
+      <div class="loginForm">
+        <form class="login" action="" method="post">
+            <br>
+            <br>
+          {% csrf_token %}
+          <p class="loginDetails">Username</p>
+          <input type="text" name="uname" ></input>
+          <br>
+            <br>
+            <br>
+          <p class="loginDetails">Password</p>
+          <input type="password" name="pass" ></input>
+          <br>
+            {% if error %}
+             <h2>{{error}}</h2>
+            {% endif %}
+          <button type="submit" name="button">Verify</button>
+        </form><br>
+        <a href="/login/register"><p>Don't have any account?<br />Make new Account</p></a>
+      </div>
+
+    </div>
+  </body>
+</html>

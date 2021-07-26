@@ -75,6 +75,14 @@ header{
     font-weight: bold;
     font-family: serif;
   }
+
+  .formItemsNew{
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    font-family: serif;
+  }
+
   input{
     font-size: 20px;
     color: white;

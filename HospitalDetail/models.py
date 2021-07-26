@@ -9,6 +9,7 @@ class HospitalDetails(models.Model):
     hPincode = models.CharField(max_length=50, default="NULL")
     hTotalNumBed = models.IntegerField(default=-1)
     hBedBooked = models.IntegerField(default=0)
+    hBedAvail = models.IntegerField(default=1)
     hLocation = models.URLField(default="NULL")
 
     def __str__(self):

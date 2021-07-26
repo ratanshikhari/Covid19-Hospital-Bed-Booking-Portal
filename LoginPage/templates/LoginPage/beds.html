@@ -22,6 +22,9 @@
                     <li><a href = "/logout/">Logout</a></li>
                 </ul>
             </div>
+            {% for m in messages %}
+                {{ m }}
+            {% endfor %}
         </header>
         <main>
             <center>  <h1> WELCOME </h1> </center>
@@ -60,7 +63,7 @@
                             <td class="row-data">{{d.hPincode}}</td>
                             <td class="row-data">{{d.hTotalNumBed}}</td>
                             <td class="row-data">{{d.hBedBooked}}</td>
-                            <td class="row-data"></td>
+                            <td class="row-data">{{d.hBedAvail}}</td>
                             <td class="row-data"><button onclick="document.getElementById('booking').style.display='block'; disable();show(); " class="button" >Book</button></td>
                         </tr>
                         {% endfor %}
@@ -85,17 +88,11 @@
             <br/>
             <div class="container" style="display:none">
                 <div id="report">
-                    <p><b>Upload your COVID-19 positive report here:</b></p>
-                    <div>
-                        <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
 
-                        <input class="form-control form-control-sm" id="formFileLg" type="file" required name="reportFile">
-                            <input type="button" value="Upload">
-                        </form>
+                    <div>
+
+
                     </div>
-                    <br/>
-                    <br/>
                     <p><b>Your booking details:</b></p>
                     <p id="a"> </p>
                     <p id="b"> </p>
@@ -103,16 +100,18 @@
                     <p id="d"> </p>
                     <p id="e"> </p>
                     <p id="f"> </p>
-
-
-
+                    <p><b>Upload your COVID-19 positive report here:</b></p>
                 </div>
 
+
                 <div id="submit_button">
-                    <form method="POST">
+                    <form method="POST" action="" enctype="multipart/form-data">
                      {% csrf_token %}
+                    <input id="formFileLg" type = "file" required name="reportFile">
+                        <input id="hBookedName" type="hidden" name="hName">
                     </br>
-                    <input type="button" class="but" value="Submit and Book Bed" onclick="this.disabled=true;this.value='Booked!'">
+                        </br>
+                        <input type="submit" class="but" value="Submit and Book Bed" >
                     </form>
                 </div>
             </div>
@@ -151,6 +150,7 @@
                 var hTotalNumBed = data[7].innerHTML;
                 var hBedBooked = data[8].innerHTML;
 
+                document.getElementById('hBookedName').setAttribute('value', data[1].innerHTML)
 
                 document.getElementById("b").innerHTML=hName;
                 document.getElementById("c").innerHTML=hCode;

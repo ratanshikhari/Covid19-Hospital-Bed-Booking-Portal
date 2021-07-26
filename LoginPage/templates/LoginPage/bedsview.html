@@ -1,0 +1,74 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'LoginPage/beds.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="wid">
+        <header>
+            <div >
+                <ul class="nav-menu">
+                    <li><a href = "/homepage/">Home</a></li>
+                    <li><a href = "/protectyourself/">Protect Yourself</a></li>
+                    <li class="btn"><a href = "/hospitaldetailsview/">Beds</a></li>
+                    <li><a href = "/helpus/">Help us</a></li>
+                    <li><a href = "/login/">Login</a></li>
+                </ul>
+            </div>
+            {% for m in messages %}
+                {{ m }}
+            {% endfor %}
+        </header>
+        <main>
+            <center>  <h1> WELCOME </h1> </center>
+
+            <div class="description">
+                <span>Please go through the list of available beds and the locations. Click on the map link to navigate to the location.</span>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                <table class="table table-responsive table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Hospital Location</th>
+                            <th>Hospital Name</th>
+                            <th>Hospital Code</th>
+                            <th>Address</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>Pincode</th>
+                            <th>Number of Beds</th>
+                            <th>Beds Booked</th>
+                            <th>Beds Available</th>
+                            <th>Book Bed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                        <tr class="abc">
+                            <td class="row-data"><a href="{{ d.hLocation }}" target="_blank">Link</a></td>
+                            <td class="row-data">{{d.hName}}</td>
+                            <td class="row-data">{{d.hCode}}</td>
+                            <td class="row-data">{{d.hAddress}}</td>
+                            <td class="row-data">{{d.hState}}</td>
+                            <td class="row-data">{{d.hCity}}</td>
+                            <td class="row-data">{{d.hPincode}}</td>
+                            <td class="row-data">{{d.hTotalNumBed}}</td>
+                            <td class="row-data">{{d.hBedBooked}}</td>
+                            <td class="row-data">{{d.hBedAvail}}</td>
+                            <td class="row-data"><a href="/login/"><button onclick="/login/" class="button" >Book</button></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </main>
+    </body>
