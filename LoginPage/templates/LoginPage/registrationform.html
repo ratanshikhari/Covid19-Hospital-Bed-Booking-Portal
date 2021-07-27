@@ -17,6 +17,7 @@
     <div class="signuppageDiv">
     <div class="register">Registration Form</div>
     <div class="fill">Fill in your details</div>
+
     <form class="signupForm"  method="post">
       {% csrf_token %}
 
@@ -29,7 +30,7 @@
       <br />
       </br>
       <span class="formItems">Phone Number:</span>
-      <input type="number" name="phone_no" required>
+      <input type="number" name="phone_no" id="num" required >
       <br />
       </br>
       <span class="formItems">Email:</span>
@@ -60,7 +61,7 @@
             {% endif %}
         </br>
         <br>
-          <button type="submit" name="button">Submit</button>
+          <button type="submit" name="button" onclick="checkLength()">Submit</button>
       <br/>
       </br>
       </br>

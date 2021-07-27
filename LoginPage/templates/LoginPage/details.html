@@ -53,7 +53,10 @@
                 </br>
                 <span class="formItems">Covid Report File: </span>
                 {% if u.hBooked == True %}
-                <td><a class="formItemsNew" href="" download="{{ u.reportFile.url }}">{{ u.reportFile }}</a></td>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="formItemsNew" value="{{ u.reportFile }}">
+                </form>
                 {% endif %}
         </div>
         {% endfor %}

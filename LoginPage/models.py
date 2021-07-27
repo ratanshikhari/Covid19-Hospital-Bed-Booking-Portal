@@ -14,7 +14,7 @@ class extendeduser(models.Model):
     phone_no = models.IntegerField(null=True)
     email = models.CharField(max_length=200, null=True)
     reportFile = models.FileField()
-    aadhar = models.IntegerField(null=True)
+    aadhar = models.IntegerField(null=True, unique=True)
     state = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)
     hSelectedName = models.CharField(max_length=200, null=True, default='Hospital not yet booked')

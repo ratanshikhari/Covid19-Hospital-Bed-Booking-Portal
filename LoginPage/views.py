@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import FileResponse
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from . models import extendeduser
 from HospitalDetail.models import HospitalDetails
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
+from django.db import IntegrityError
 
 def loginPage(request):
     context = {}
@@ -43,7 +44,6 @@ def registerPage(request):
                 newextendeduser = extendeduser(phone_no=phnum, age=age, email=email, aadhar=aadhar, state=state, city= city, user=user, name=name)
                 newextendeduser.save()
                 auth.login(request, user)
-
                 return redirect('/login/')
         else:
             return render(request, 'LoginPage/registrationform.html', {'error': "Password Dont match"})
@@ -61,7 +61,7 @@ def displayHDetails(request):
     uDataNew = extendeduser.objects.get(user=request.user)
     if uDataNew.hBooked == True:
         if uDataNew.hBooked == True:
-            return HttpResponse("Bed Already Booked!")
+            return render(request, 'LoginPage/redirect.html', {})
     else:
         if request.method == "POST":
             uDataNew.reportFile = request.FILES['reportFile']
@@ -77,7 +77,11 @@ def displayHDetails(request):
 
 @login_required(login_url='/login/')
 def userDetails(request):
-    print(request.POST)
+    if request.method == "POST":
+        user = extendeduser.objects.get(user=request.user)
+        filename = user.reportFile.path
+        response = FileResponse(open(filename, "rb"), as_attachment=True)
+        return response
     uData = extendeduser.objects.filter(user=request.user)
     return render(request, 'LoginPage/details.html', {'udata': uData})
 
