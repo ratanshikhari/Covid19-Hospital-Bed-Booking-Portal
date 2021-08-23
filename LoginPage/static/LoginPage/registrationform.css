@@ -3,6 +3,13 @@
   padding:0;
 }
 
+form input[type="text"]{
+  text-transform: lowercase;
+}
+
+.classname{
+  text-transform: lowercase;
+}
 
 body{
   background-image: url('background.jpeg');
